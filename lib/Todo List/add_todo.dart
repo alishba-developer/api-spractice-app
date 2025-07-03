@@ -124,18 +124,18 @@ class _AddTodoState extends State<AddTodo> {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 1,
-                  itemBuilder: (context, i) {
+                  itemCount: todoController.TodoList.length,
+                  itemBuilder: (context, index) {
+                    final todo = todoController.TodoList[index];
                     return Obx(
                       () =>
                           todoController.isloading.value
                               ? Lottie.network(
                                 "https://lottie.host/0418f2ba-b6d0-4937-beb8-113968e88af8/0STGlUmlmw.json",
-                            backgroundLoading: true,
-                            alignment: Alignment.bottomCenter,
-                            height: 100,
-                            width: 100,
-
+                                backgroundLoading: true,
+                                alignment: Alignment.bottomCenter,
+                                height: 100,
+                                width: 100,
                               )
                               : Column(
                                 children:
@@ -217,6 +217,11 @@ class _AddTodoState extends State<AddTodo> {
                                                                   onPressed: () {
                                                                     textEditingController
                                                                         .clear();
+                                                                    todoController
+                                                                        .putTodos(
+                                                                          todo.id!,
+                                                                          "Updated Title",
+                                                                        );
                                                                     Get.back();
                                                                     print(
                                                                       textEditingController
