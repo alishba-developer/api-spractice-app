@@ -18,7 +18,7 @@ class _PickImageState extends State<PickImage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[100],
+      backgroundColor: Colors.deepPurple[200],
       body: Center(
         child: Stack(
           children: [
